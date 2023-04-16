@@ -32,6 +32,36 @@ const initialState: Bug[] = [
         dateCreation: '2023/02/26',
         dateLastChange: '',
     },
+    {
+        id: ':ewe',
+        title: 'Buttone non funziona',
+        description: 'non funziona click',
+        creator: 'Ivan Rossi',
+        priority: 3,
+        state: 'Pending',
+        dateCreation: '2020/12/23',
+        dateLastChange: '',
+    },
+    {
+        id: 'frs/',
+        title: 'inserire route',
+        description: 'non funziona route delle pagine',
+        creator: 'Andrea Infantino',
+        priority: 2,
+        state: 'Open',
+        dateCreation: '2023/02/26',
+        dateLastChange: '',
+    },
+    {
+        id: 'grs/',
+        title: 'inserire route',
+        description: 'non funziona route delle pagine',
+        creator: 'Andrea Infantino',
+        priority: 1,
+        state: 'Open',
+        dateCreation: '2023/02/26',
+        dateLastChange: '',
+    },
 ]
 
 export const bugSlice = createSlice({
@@ -39,14 +69,23 @@ export const bugSlice = createSlice({
     initialState,
     reducers: {
         createBug: (state, action: PayloadAction<Bug>) => {
-            void state.push(action.payload)
+            state.push(action.payload)
         },
         deleteBug: (state, action: PayloadAction<Bug>) => {
-            return state.filter((p) => p.id !== action.payload.id)
+            return state.filter((b) => b.id !== action.payload.id)
         },
-        updateBug: (state, action: PayloadAction<Bug>) => {},
+        changePriority: (state, action) => ({
+            ...state,
+            [action.payload.id]: action.payload.priority,
+        }),
+        // updateBug: (state, action: PayloadAction<Bug>) => {
+        //     const index: number = state.findIndex(
+        //         (bug) => bug.id === action.payload.id
+        //     )
+        //     return (state[index] = action.payload)
+        // },
     },
 })
 
-export const { createBug, updateBug, deleteBug } = bugSlice.actions
+export const { createBug, deleteBug, changePriority } = bugSlice.actions
 export default bugSlice.reducer

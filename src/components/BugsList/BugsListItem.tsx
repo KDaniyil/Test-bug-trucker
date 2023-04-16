@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { Bug } from 'utils/bugModel'
 import './BugsListItem.scss'
 import BugPriority from 'components/BugPriority/BugPriority'
-import BugState from 'components/BugState/BugState'
 import { useAppDispatch } from 'redux/hooks'
 import { deleteBug } from 'redux/bugsReducer'
 
@@ -31,8 +30,11 @@ const BugsListItem = ({ bug }: Props) => {
                 <p>
                     Authore: <span className="bold">{bug.creator}</span>
                 </p>
-                <BugPriority priority={bug.priority.toString()} />
-                <BugState state={bug.state} />
+                <BugPriority priority={bug.priority.toString()} id={bug.id} />
+                <p>
+                    {' '}
+                    Stato: <span className="bold">{bug.state}</span>
+                </p>
                 <p className={bug.dateLastChange === '' ? 'hide' : 'show'}>
                     L'ultima modifica:{' '}
                     <span className="bold">{bug.dateLastChange}</span>

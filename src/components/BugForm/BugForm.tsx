@@ -1,6 +1,14 @@
-import { TextField, Button } from '@mui/material'
+import {
+    TextField,
+    Button,
+    Box,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    SelectChangeEvent,
+} from '@mui/material'
 import BugPriority from 'components/BugPriority/BugPriority'
-import BugState from 'components/BugState/BugState'
 import { useState } from 'react'
 import { useAppDispatch } from 'redux/hooks'
 import { Bug, resetBug } from 'utils/bugModel'
@@ -19,6 +27,12 @@ const BugForm = ({ bug }: Props) => {
         setNewBug((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
+        }))
+    }
+    const handleChangeState = (event: SelectChangeEvent) => {
+        setNewBug((prevState) => ({
+            ...prevState,
+            state: event.target.value as string,
         }))
     }
     const onSend = (e: React.FormEvent<HTMLFormElement>) => {
@@ -64,10 +78,32 @@ const BugForm = ({ bug }: Props) => {
                 ></TextField>
             </div>
             <div>
-                <BugPriority priority={newBug.priority.toString()} />
+                <BugPriority
+                    priority={newBug.priority.toString()}
+                    id={newBug.id}
+                />
             </div>
             <div>
-                <BugState state={newBug.state} />
+                <Box sx={{ minWidth: 120, marginTop: '15px' }}>
+                    <FormControl fullWidth>
+                        <InputLabel id="select-label">Stato</InputLabel>
+                        <Select
+                            required
+                            labelId="select-label"
+                            id="demo-simple-select"
+                            value={newBug.state}
+                            label="Priorità"
+                            name="state"
+                            onChange={handleChangeState}
+                        >
+                            <MenuItem defaultChecked value={'Open'}>
+                                Open
+                            </MenuItem>
+                            <MenuItem value={'Pending'}>Pending</MenuItem>
+                            <MenuItem value={'Closed'}>Closed</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
             </div>
             <Button
                 variant="outlined"
