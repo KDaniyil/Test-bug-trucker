@@ -4,12 +4,15 @@ import { Bug } from 'utils/bugModel'
 import './BugsListItem.scss'
 import BugPriority from 'components/BugPriority/BugPriority'
 import BugState from 'components/BugState/BugState'
+import { useAppDispatch } from 'redux/hooks'
+import { deleteBug } from 'redux/bugsReducer'
 
 type Props = {
     bug: Bug
 }
 
 const BugsListItem = ({ bug }: Props) => {
+    const dispatch = useAppDispatch()
     return (
         <Card variant="elevation" className="bug-card">
             <CardContent>
@@ -39,7 +42,9 @@ const BugsListItem = ({ bug }: Props) => {
                 <Button>
                     <Link to={`/bugs/${bug.id}`}>Modifica</Link>
                 </Button>
-                <Button>Cancella</Button>
+                <Button onClick={() => dispatch(deleteBug(bug))}>
+                    Cancella
+                </Button>
             </CardActions>
         </Card>
     )

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Bug } from 'utils/bugModel'
 
 const initialState: Bug[] = [
@@ -9,7 +9,7 @@ const initialState: Bug[] = [
         creator: 'Ivan Rossi',
         priority: 3,
         state: 'Pending',
-        dateCreation: '11/03/2020',
+        dateCreation: '2020/12/23',
         dateLastChange: '',
     },
     {
@@ -19,7 +19,7 @@ const initialState: Bug[] = [
         creator: 'Giovanni Verga',
         priority: 1,
         state: 'Closed',
-        dateCreation: '11/03/2020',
+        dateCreation: '2023/03/23',
         dateLastChange: '',
     },
     {
@@ -29,7 +29,7 @@ const initialState: Bug[] = [
         creator: 'Andrea Infantino',
         priority: 2,
         state: 'Open',
-        dateCreation: '11/03/2020',
+        dateCreation: '2023/02/26',
         dateLastChange: '',
     },
 ]
@@ -38,12 +38,15 @@ export const bugSlice = createSlice({
     name: 'bugs',
     initialState,
     reducers: {
-        getBugs: (state) => {},
-        createBug: (state, actions) => {},
-        updateBug: (state, actions) => {},
-        deleteBug: (state, actions) => {},
+        createBug: (state, action: PayloadAction<Bug>) => {
+            void state.push(action.payload)
+        },
+        deleteBug: (state, action: PayloadAction<Bug>) => {
+            return state.filter((p) => p.id !== action.payload.id)
+        },
+        updateBug: (state, action: PayloadAction<Bug>) => {},
     },
 })
 
-export const { getBugs, createBug, updateBug, deleteBug } = bugSlice.actions
+export const { createBug, updateBug, deleteBug } = bugSlice.actions
 export default bugSlice.reducer

@@ -5,6 +5,10 @@
     font-weight: bold;
 }
 .form{
+    border: 1px solid gray;
+    box-shadow: 1px 1px 15px 1px gray;
+    padding: 10px;
+    border-radius: 5px;
     margin-top: 25px;
     display: flex;
     flex-direction: column;

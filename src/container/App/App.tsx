@@ -1,9 +1,9 @@
 import { Container, CssBaseline, StyledEngineProvider } from '@mui/material'
 import Header from 'container/Header/Header'
-import AllBugs from 'pages/AllBugs/AllBugs'
+import BugsPage from 'pages/BugsPage/BugsPage'
 import NewBug from 'pages/NewBug/NewBug'
-import SingleBug from 'pages/SingleBug/SingleBug'
 import { Route, Routes } from 'react-router-dom'
+import EditBug from 'pages/EditBug/EditBug'
 
 type Props = {}
 
@@ -15,8 +15,8 @@ const App = (props: Props) => {
                 <Header />
                 <Container>
                     <Routes>
-                        <Route path="/" element={<AllBugs />} />
-                        <Route path="/bugs/:id" element={<SingleBug />} />
+                        <Route path="/" element={<BugsPage />} />
+                        <Route path="/bugs/:id" element={<EditBug />} />
                         <Route path="/newbug" element={<NewBug />} />
                     </Routes>
                 </Container>

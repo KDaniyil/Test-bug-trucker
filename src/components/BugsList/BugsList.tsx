@@ -1,11 +1,12 @@
 import { Grid } from '@mui/material'
 import BugsListItem from './BugsListItem'
-import { useAppSelector } from 'redux/hooks'
+import { Bug } from 'utils/bugModel'
 
-type Props = {}
+type Props = {
+    bugsArray: Bug[]
+}
 
-const BugsList = (props: Props) => {
-    const bugsArray = useAppSelector((state) => state.bugs)
+const BugsList = ({ bugsArray }: Props) => {
     return (
         <Grid container spacing={4} justifyContent="center" marginTop={2}>
             {bugsArray.map((bug) => {

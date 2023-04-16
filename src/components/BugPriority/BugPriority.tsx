@@ -10,12 +10,11 @@ import React from 'react'
 import { COLORS } from 'utils/bugModel'
 
 type Props = {
-    priority?: string
+    priority: string
 }
 
 const BugPriority = ({ priority }: Props) => {
     const [priorityBug, setPriorityBug] = React.useState(priority)
-
     const handleChange = (event: SelectChangeEvent) => {
         setPriorityBug(event.target.value as string)
     }
