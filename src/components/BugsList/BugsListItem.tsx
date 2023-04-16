@@ -3,15 +3,13 @@ import { Link } from 'react-router-dom'
 import { Bug } from 'utils/bugModel'
 import './BugsListItem.scss'
 import BugPriority from 'components/BugPriority/BugPriority'
-import { useAppDispatch } from 'redux/hooks'
-import { deleteBug } from 'redux/bugsReducer'
+import DeleteButton from 'components/DeleteButton/DeleteButton'
 
 type Props = {
     bug: Bug
 }
 
 const BugsListItem = ({ bug }: Props) => {
-    const dispatch = useAppDispatch()
     return (
         <Card variant="elevation" className="bug-card">
             <CardContent>
@@ -41,12 +39,10 @@ const BugsListItem = ({ bug }: Props) => {
                 </p>
             </CardContent>
             <CardActions sx={{ justifyContent: 'space-between' }}>
-                <Button>
+                <Button variant="outlined">
                     <Link to={`/bugs/${bug.id}`}>Modifica</Link>
                 </Button>
-                <Button onClick={() => dispatch(deleteBug(bug))}>
-                    Cancella
-                </Button>
+                <DeleteButton bug={bug} />
             </CardActions>
         </Card>
     )

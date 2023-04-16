@@ -12,7 +12,7 @@ import { changePriority } from 'redux/prioriyReducer'
 import { COLORS } from 'utils/bugModel'
 
 type Props = {
-    priority: string
+    priority?: string
     id: string
 }
 

@@ -1,4 +1,4 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 type PriorityType = {
     [id: string]: string
@@ -9,7 +9,7 @@ export const prioritySlice = createSlice({
     name: 'priority',
     initialState,
     reducers: {
-        changePriority: (state, action: PayloadAction<PriorityType>) => ({
+        changePriority: (state, action) => ({
             ...state,
             [action.payload.id]: action.payload.priority,
         }),
