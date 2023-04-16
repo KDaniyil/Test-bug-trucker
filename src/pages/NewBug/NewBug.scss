@@ -1,0 +1,40 @@
+@use "../../assets/mixins";
+@import "../../assets/variables";
+
+.bold{
+    font-weight: bold;
+}
+.form{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    div{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: $breakpoint-laptop) {
+    .text{
+        font-size: 2.5rem;
+    }
+    .bug-id{
+        font-size: 1.5rem;
+    }
+    .form{
+        flex-direction: row;
+        flex-wrap: wrap;
+        &>div{
+        width: 45%;
+        }
+    .newBug-btn{
+        margin: 10px auto;
+        width: 400px;
+        height: 60px;
+        @include mixins.transitionEff; 
+        &:hover{
+            @include mixins.hoverEff;
+        }
+        }
+    }
+}

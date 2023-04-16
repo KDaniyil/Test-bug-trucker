@@ -1,0 +1,10 @@
+@import "./variables";
+
+@mixin transitionEff{
+    transition: all .5s ease;
+}
+
+@mixin hoverEff{
+    @include transitionEff;
+    transform: scale(1.1);
+}

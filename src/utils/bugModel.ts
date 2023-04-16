@@ -1,36 +1,19 @@
 export type Bug = {
-    id: number
+    id: string
     title: string
     description: string
-    priority: string
+    creator: string
+    priority: number
     state: string
     dateCreation: string
     dateLastChange?: string
 }
 
-export const bugsArray: Bug[] = [
-    {
-        id: 1,
-        title: 'Buttone non funziona',
-        description: 'mancha hover',
-        priority: 'High',
-        state: 'pending',
-        dateCreation: '11/03/2020',
-    },
-    {
-        id: 2,
-        title: 'Buttone non funziona',
-        description: 'mancha hover',
-        priority: 'High',
-        state: 'pending',
-        dateCreation: '11/03/2020',
-    },
-    {
-        id: 3,
-        title: 'Buttone non funziona',
-        description: 'mancha hover',
-        priority: 'High',
-        state: 'pending',
-        dateCreation: '11/03/2020',
-    },
-]
+type ColorsType = {
+    [id: number]: string
+}
+export const COLORS: ColorsType = {
+    1: 'red',
+    2: 'orange',
+    3: 'green',
+}

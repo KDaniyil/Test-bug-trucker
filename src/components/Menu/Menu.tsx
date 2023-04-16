@@ -8,7 +8,7 @@ const Menu = (props: Props) => {
     return (
         <Box display="flex">
             <Logo />
-            <MenuItem to="/">All bugs</MenuItem>
+            <MenuItem to="/">Bugs</MenuItem>
             <MenuItem to="/newbug">New Bug</MenuItem>
         </Box>
     )

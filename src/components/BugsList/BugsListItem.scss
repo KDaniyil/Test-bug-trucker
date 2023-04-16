@@ -1,0 +1,30 @@
+@use "../../assets/mixins";
+.bold{
+    font-weight: bold;
+}
+.bug-card{
+    @include mixins.transitionEff;
+    &:hover{
+        @include mixins.hoverEff;
+    }
+    p{
+        margin: 5px 0;
+    }
+    button{
+        @include mixins.transitionEff;
+    &:hover{
+        @include mixins.hoverEff;
+    }
+    a{
+        color: #1976d2;
+        text-decoration: none;
+    }
+    }
+}
+
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}

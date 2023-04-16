@@ -3,28 +3,34 @@ import { Bug } from 'utils/bugModel'
 
 const initialState: Bug[] = [
     {
-        id: 1,
+        id: ':ere',
         title: 'Buttone non funziona',
         description: 'non funziona click',
-        priority: 'High',
-        state: 'pending',
+        creator: 'Ivan Rossi',
+        priority: 3,
+        state: 'Pending',
         dateCreation: '11/03/2020',
+        dateLastChange: '',
     },
     {
-        id: 2,
+        id: 'sda-',
         title: 'inserire i controli per form',
         description: 'contollare che tutti i dati sono stati completati',
-        priority: 'High',
-        state: 'pending',
+        creator: 'Giovanni Verga',
+        priority: 1,
+        state: 'Closed',
         dateCreation: '11/03/2020',
+        dateLastChange: '',
     },
     {
-        id: 3,
+        id: 'fes/',
         title: 'inserire route',
         description: 'non funziona route delle pagine',
-        priority: 'High',
-        state: 'pending',
+        creator: 'Andrea Infantino',
+        priority: 2,
+        state: 'Open',
         dateCreation: '11/03/2020',
+        dateLastChange: '',
     },
 ]
 
