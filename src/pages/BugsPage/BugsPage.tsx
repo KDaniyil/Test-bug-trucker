@@ -8,9 +8,9 @@ type Props = {}
 
 const BugsPage = (props: Props) => {
     const bugsArray = useAppSelector((state) => state.bugs)
-    const [selectedFiltr, setSelectedFiltr] = useState('')
+    const [selectedFilter, setSelectedFilter] = useState('0')
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedFiltr(e.target.value)
+        setSelectedFilter(e.target.value)
     }
 
     return (
@@ -20,8 +20,8 @@ const BugsPage = (props: Props) => {
                 <Typography variant="h5" textAlign={'center'}>
                     Filtra per la priorità
                 </Typography>
-                <select value={selectedFiltr} onChange={handleChange}>
-                    <option value="">All</option>
+                <select value={selectedFilter} onChange={handleChange}>
+                    <option value="0">All</option>
                     <option value="1">High</option>
                     <option value="2">Medium</option>
                     <option value="3">Low</option>
@@ -30,10 +30,10 @@ const BugsPage = (props: Props) => {
 
             <BugsList
                 bugsArray={
-                    selectedFiltr === ''
+                    selectedFilter === '0'
                         ? bugsArray
                         : bugsArray.filter(
-                              (bug) => bug.priority === Number(selectedFiltr)
+                              (bug) => bug.priority === Number(selectedFilter)
                           )
                 }
             />

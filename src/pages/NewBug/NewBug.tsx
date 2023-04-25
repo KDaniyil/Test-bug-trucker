@@ -33,7 +33,7 @@ const NewBug = (props: Props) => {
                 Id assegnato per questo Bug è{' '}
                 <span className="bold">{uniqueId}</span>
             </Typography>
-            <BugForm bug={emptyBug} />
+            <BugForm bug={emptyBug} titleButton="Creare" />
         </>
     )
 }

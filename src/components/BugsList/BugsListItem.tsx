@@ -28,7 +28,7 @@ const BugsListItem = ({ bug }: Props) => {
                 <p>
                     Authore: <span className="bold">{bug.creator}</span>
                 </p>
-                <BugPriority priority={bug.priority.toString()} id={bug.id} />
+                <BugPriority bug={bug} />
                 <p>
                     {' '}
                     Stato: <span className="bold">{bug.state}</span>

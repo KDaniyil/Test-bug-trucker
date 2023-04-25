@@ -68,24 +68,28 @@ export const bugSlice = createSlice({
     name: 'bugs',
     initialState,
     reducers: {
-        createBug: (state, action: PayloadAction<Bug>) => {
-            state.push(action.payload)
+        createModifyBug: (state, action: PayloadAction<Bug>) => {
+            const index: number = state.findIndex(
+                (bug) => bug.id === action.payload.id
+            )
+            if (index !== -1) {
+                state[index] = action.payload
+            } else {
+                state.push(action.payload)
+            }
         },
         deleteBug: (state, action: PayloadAction<Bug>) => {
             return state.filter((b) => b.id !== action.payload.id)
         },
-        changePriority: (state, action) => ({
-            ...state,
-            [action.payload.id]: action.payload.priority,
-        }),
-        // updateBug: (state, action: PayloadAction<Bug>) => {
-        //     const index: number = state.findIndex(
-        //         (bug) => bug.id === action.payload.id
-        //     )
-        //     return (state[index] = action.payload)
-        // },
+        changePriority: (state, action: PayloadAction<Bug>) => {
+            const { id, priority } = action.payload
+            const index: number = state.findIndex(
+                (stateBug) => stateBug.id === id
+            )
+            state[index].priority = priority
+        },
     },
 })
 
-export const { createBug, deleteBug, changePriority } = bugSlice.actions
+export const { createModifyBug, deleteBug, changePriority } = bugSlice.actions
 export default bugSlice.reducer

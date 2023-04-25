@@ -7,40 +7,49 @@ import {
     SelectChangeEvent,
 } from '@mui/material'
 import React from 'react'
+import { changePriority } from 'redux/bugsReducer'
 import { useAppDispatch } from 'redux/hooks'
-import { changePriority } from 'redux/prioriyReducer'
-import { COLORS } from 'utils/bugModel'
+import { Bug, COLORS } from 'utils/bugModel'
 
 type Props = {
-    priority?: string
-    id: string
+    bug: Bug
 }
 
-const BugPriority = ({ priority, id }: Props) => {
+const BugPriority = ({ bug }: Props) => {
     const dispatch = useAppDispatch()
-    const [priorityBug, setPriorityBug] = React.useState(priority)
+    const [priorityBug, setPriorityBug] = React.useState<number>(bug.priority)
     const handleChange = (event: SelectChangeEvent) => {
-        setPriorityBug(event.target.value as string)
+        const eventPriority = event.target.value as string
+        console.log({ eventPriority })
+        setPriorityBug(Number(eventPriority))
+        console.log(`${bug.id}:${priorityBug}`)
         dispatch(
             changePriority({
-                id: id,
+                id: bug.id,
                 priority: priorityBug,
+                title: bug.title,
+                description: bug.description,
+                creator: bug.creator,
+                state: bug.state,
+                dateCreation: bug.dateCreation,
             })
         )
     }
     return (
         <Box sx={{ minWidth: 120, marginTop: '15px' }}>
+            <p>{priorityBug}</p>
             <FormControl fullWidth>
                 <InputLabel id="select-label">Priorità</InputLabel>
                 <Select
                     required
                     labelId="select-label"
                     id="demo-simple-select"
-                    value={priorityBug}
+                    value={priorityBug.toString()}
                     label="Priorità"
                     onChange={handleChange}
-                    sx={{ backgroundColor: `${COLORS[Number(priorityBug)]}` }}
+                    sx={{ backgroundColor: `${COLORS[priorityBug]}` }}
                 >
+                    <MenuItem value={0}>None</MenuItem>
                     <MenuItem value={1}>High</MenuItem>
                     <MenuItem value={2}>Medium</MenuItem>
                     <MenuItem value={3}>Low</MenuItem>

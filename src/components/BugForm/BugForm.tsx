@@ -13,13 +13,14 @@ import { useState } from 'react'
 import { useAppDispatch } from 'redux/hooks'
 import { Bug, resetBug } from 'utils/bugModel'
 import './BugForm.scss'
-import { createBug } from 'redux/bugsReducer'
+import { createModifyBug } from 'redux/bugsReducer'
 
 type Props = {
     bug: Bug
+    titleButton: string
 }
 
-const BugForm = ({ bug }: Props) => {
+const BugForm = ({ bug, titleButton }: Props) => {
     const [newBug, setNewBug] = useState<Bug>(bug)
     const dispatch = useAppDispatch()
 
@@ -78,10 +79,7 @@ const BugForm = ({ bug }: Props) => {
                 ></TextField>
             </div>
             <div>
-                <BugPriority
-                    priority={newBug.priority.toString()}
-                    id={newBug.id}
-                />
+                <BugPriority bug={newBug} />
             </div>
             <div>
                 <Box sx={{ minWidth: 120, marginTop: '15px' }}>
@@ -109,9 +107,9 @@ const BugForm = ({ bug }: Props) => {
                 variant="outlined"
                 type="submit"
                 className="newBug-btn"
-                onClick={() => dispatch(createBug(newBug))}
+                onClick={() => dispatch(createModifyBug(newBug))}
             >
-                Creare
+                {titleButton}
             </Button>
         </form>
     )

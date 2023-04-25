@@ -22,7 +22,7 @@ const EditBug = ({ bugObject }: Props) => {
                 Id assegnato per questo Bug è{' '}
                 <span className="bold">{bug.id}</span>
             </Typography>
-            <BugForm bug={bug} />
+            <BugForm bug={bug} titleButton="Modificare" />
         </>
     )
 }
