@@ -11,7 +11,7 @@ import {
 import BugPriority from 'components/BugPriority/BugPriority'
 import { useState } from 'react'
 import { useAppDispatch } from 'redux/hooks'
-import { Bug, resetBug } from 'utils/bugModel'
+import { Bug } from 'utils/bugModel'
 import './BugForm.scss'
 import { createModifyBug } from 'redux/bugsReducer'
 import { Link } from 'react-router-dom'
@@ -45,7 +45,6 @@ const BugForm = ({ bug, titleButton }: Props) => {
     const onSend = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         dispatch(createModifyBug(newBug))
-        setNewBug(resetBug)
     }
     return (
         <form onSubmit={onSend} className="form">

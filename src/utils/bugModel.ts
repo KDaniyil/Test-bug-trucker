@@ -18,16 +18,6 @@ export const COLORS: ColorsType = {
     3: 'green',
 }
 
-export const resetBug: Bug = {
-    id: '',
-    title: '',
-    description: '',
-    creator: '',
-    priority: 0,
-    state: '',
-    dateCreation: '',
-    dateLastChange: '',
-}
 export const getBugsObject = (array: Bug[]) =>
     array.reduce(
         (object, bug) => ({
