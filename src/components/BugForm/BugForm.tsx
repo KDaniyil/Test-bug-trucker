@@ -44,6 +44,7 @@ const BugForm = ({ bug, titleButton }: Props) => {
     }
     const onSend = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        dispatch(createModifyBug(newBug))
         setNewBug(resetBug)
     }
     return (
@@ -113,12 +114,7 @@ const BugForm = ({ bug, titleButton }: Props) => {
                 </Box>
             </div>
             <Button variant="outlined" type="submit" className="newBug-btn">
-                <Link
-                    onClick={() => dispatch(createModifyBug(newBug))}
-                    to={'/'}
-                >
-                    {titleButton}
-                </Link>
+                <Link to={'/'}>{titleButton}</Link>
             </Button>
         </form>
     )

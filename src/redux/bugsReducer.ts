@@ -13,7 +13,7 @@ const initialState: Bug[] = [
         dateLastChange: '',
     },
     {
-        id: 'sda-',
+        id: 'sdao',
         title: 'inserire i controli per form',
         description: 'contollare che tutti i dati sono stati completati',
         creator: 'Giovanni Verga',
@@ -23,7 +23,7 @@ const initialState: Bug[] = [
         dateLastChange: '',
     },
     {
-        id: 'fes/',
+        id: 'fesm',
         title: 'inserire route',
         description: 'non funziona route delle pagine',
         creator: 'Andrea Infantino',
@@ -43,7 +43,7 @@ const initialState: Bug[] = [
         dateLastChange: '',
     },
     {
-        id: 'frs/',
+        id: 'frs.',
         title: 'inserire route',
         description: 'non funziona route delle pagine',
         creator: 'Andrea Infantino',
@@ -53,7 +53,7 @@ const initialState: Bug[] = [
         dateLastChange: '',
     },
     {
-        id: 'grs/',
+        id: 'grso',
         title: 'inserire route',
         description: 'non funziona route delle pagine',
         creator: 'Andrea Infantino',
