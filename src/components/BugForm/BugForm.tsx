@@ -14,6 +14,7 @@ import { useAppDispatch } from 'redux/hooks'
 import { Bug, resetBug } from 'utils/bugModel'
 import './BugForm.scss'
 import { createModifyBug } from 'redux/bugsReducer'
+import { Link } from 'react-router-dom'
 
 type Props = {
     bug: Bug
@@ -23,7 +24,12 @@ type Props = {
 const BugForm = ({ bug, titleButton }: Props) => {
     const [newBug, setNewBug] = useState<Bug>(bug)
     const dispatch = useAppDispatch()
-
+    const changeNewPriority = (newPriority: number) => {
+        setNewBug((prevState) => ({
+            ...prevState,
+            priority: newPriority,
+        }))
+    }
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNewBug((prevState) => ({
             ...prevState,
@@ -79,7 +85,10 @@ const BugForm = ({ bug, titleButton }: Props) => {
                 ></TextField>
             </div>
             <div>
-                <BugPriority bug={newBug} />
+                <BugPriority
+                    bug={newBug}
+                    changeNewPriority={changeNewPriority}
+                />
             </div>
             <div>
                 <Box sx={{ minWidth: 120, marginTop: '15px' }}>
@@ -103,13 +112,13 @@ const BugForm = ({ bug, titleButton }: Props) => {
                     </FormControl>
                 </Box>
             </div>
-            <Button
-                variant="outlined"
-                type="submit"
-                className="newBug-btn"
-                onClick={() => dispatch(createModifyBug(newBug))}
-            >
-                {titleButton}
+            <Button variant="outlined" type="submit" className="newBug-btn">
+                <Link
+                    onClick={() => dispatch(createModifyBug(newBug))}
+                    to={'/'}
+                >
+                    {titleButton}
+                </Link>
             </Button>
         </form>
     )

@@ -82,11 +82,10 @@ export const bugSlice = createSlice({
             return state.filter((b) => b.id !== action.payload.id)
         },
         changePriority: (state, action: PayloadAction<Bug>) => {
-            const { id, priority } = action.payload
             const index: number = state.findIndex(
-                (stateBug) => stateBug.id === id
+                (stateBug) => stateBug.id === action.payload.id
             )
-            state[index].priority = priority
+            state[index].priority = action.payload.priority
         },
     },
 })

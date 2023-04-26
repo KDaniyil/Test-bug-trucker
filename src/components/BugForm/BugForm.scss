@@ -16,6 +16,10 @@
     div{
         width: 100%;
     }
+    a{
+        text-decoration:none;
+        color: black;
+    }
 }
 
 @media screen and (min-width: $breakpoint-laptop) {

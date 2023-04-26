@@ -4,12 +4,28 @@ import { Bug } from 'utils/bugModel'
 import './BugsListItem.scss'
 import BugPriority from 'components/BugPriority/BugPriority'
 import DeleteButton from 'components/DeleteButton/DeleteButton'
+import { useAppDispatch } from 'redux/hooks'
+import { changePriority } from 'redux/bugsReducer'
 
 type Props = {
     bug: Bug
 }
 
 const BugsListItem = ({ bug }: Props) => {
+    const dispatch = useAppDispatch()
+    const changeNewPriority = (newPriority: number) => {
+        dispatch(
+            changePriority({
+                id: bug.id,
+                title: bug.title,
+                description: bug.description,
+                creator: bug.creator,
+                priority: newPriority,
+                state: bug.state,
+                dateCreation: bug.dateCreation,
+            })
+        )
+    }
     return (
         <Card variant="elevation" className="bug-card">
             <CardContent>
@@ -28,7 +44,7 @@ const BugsListItem = ({ bug }: Props) => {
                 <p>
                     Authore: <span className="bold">{bug.creator}</span>
                 </p>
-                <BugPriority bug={bug} />
+                <BugPriority bug={bug} changeNewPriority={changeNewPriority} />
                 <p>
                     {' '}
                     Stato: <span className="bold">{bug.state}</span>
